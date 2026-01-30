@@ -94,9 +94,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'petrescue_db',
-        'USER': 'root',
-        'PASSWORD': '*Tarusm9380',
-        'HOST': 'localhost',
+        'USER': 'petrescue_user',
+        'PASSWORD': 'petrescue_pass',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
