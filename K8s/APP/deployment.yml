@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petrescue-app
+  namespace: petrescue-ns
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+       maxUnavailable: 1
+       maxSurge: 1
+  selector:
+    matchLabels:
+      app: petrescue-app
+  template:
+    metadata:
+      labels:
+       app: petrescue-app
+    spec:
+      containers:
+      - name: petrescue-app
+        image: pistionhead/petrescue-app:1.0
+        ports:
+        - containerPort: 8000
+        envFrom:
+           - configMapRef:
+                name: app-configmap
+           - secretRef:
+                name: app-secret    
+    
