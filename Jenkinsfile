@@ -10,7 +10,7 @@ pipeline {
         stage('CLONE REPO'){
             steps {
                 echo "cloning repo.....📦📦📦"
-                git 'https://github.com/VARUNx96/PetRescue_Local_Deployment'
+                clone("https://github.com/VARUNx96/PetRescue_Local_Deployment.git","main")
             }
         }
         stage('BUILD DOCKER IMAGE'){
