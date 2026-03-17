@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "pistionhead/petrescue-app"
         TAG = "${BUILD_NUMBER}"
+        PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
     }
 
     stages {
