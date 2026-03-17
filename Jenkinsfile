@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    enviroment {
+    environment {
         IMAGE_NAME = "pistionhead/petrescue-app"
         TAG = "${BUILD_NUMBER}"
     }
@@ -21,9 +21,9 @@ pipeline {
         }
         stage('DOCKER HUB LOGIN'){
             steps {
-                withCredentials([usernamePassword(credentialsid: 'dockerhub-cred',
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds',
                 usernameVariable: 'USER',
-                passwirdVariable: 'PASS')]) {
+                passwordVariable: 'PASS')]) {
                     echo "logging into docker...🐳🐳🐳"
                     sh 'docker login -u $USER -p $PASS'
                 }
