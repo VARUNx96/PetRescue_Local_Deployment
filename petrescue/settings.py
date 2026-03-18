@@ -54,8 +54,11 @@ INSTALLED_APPS = [
     'main',  # Main application containing core functionality
 ]
 
+
+
 # Middleware components that process requests and responses
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -142,8 +145,10 @@ USE_TZ = True  # Enable timezone support
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 # Configuration for serving static assets like CSS, JS, and images
 
-STATIC_URL = 'static/'  # URL prefix for static files
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',  # Directory containing static files
